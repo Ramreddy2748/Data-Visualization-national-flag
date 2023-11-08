@@ -7,21 +7,31 @@ Original file is located at
     https://colab.research.google.com/drive/1G2Jvq3Rc4fTwzj989gdBEqrHIM4Y5IiB
 """
 
+
+###Importing the required libraries
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
-##
+## Plot  the axis
 fi,axis=plt.subplots(figsize=(6,4))
+
+## Plot the rectangle in the figure
+
 axis.add_patch(patches.Rectangle((0,4/5),1,1/5,color='orange'))
 axis.add_patch(patches.Rectangle((0,3/5),1,1/5,color='white'))
 axis.add_patch(patches.Rectangle((0,2/5),1,1/5,color='green'))
-## x=0.5,y=0.7,radius=0.1
+
+## plot the ashoka chakra
+## circle axis(x=0.5,y=0.7) and radius=0.1
+
 circle=plt.Circle((0.5,0.7),0.1,color='blue',fill=False)
 axis.add_patch(circle)
 c2=plt.Circle((0.5,0.7),0.02,color='black',fill=False)
 axis.add_patch(c2)
 
+## plot the "Spokes"
 for i in range(0,360,15):
   ang = i * (3.14159265358979323846 / 180)
   x1 = 0.5 + 0.1 * np.cos(ang)
@@ -31,10 +41,17 @@ for i in range(0,360,15):
   axis.plot([x1, x2], [y1, y2], 'blue')
 
 
+
+##   set the limits for the axis
 axis.set_xlim(0,1)
 axis.set_ylim(0,1)
+
+##   Labels for the axis
 axis.set_xlabel('X')
 axis.set_ylabel('Y')
+
+## for removing the axis lines
+##  gca(get current axis)
 plt.gca().spines['right'].set_visible(False)
 plt.gca().spines['bottom'].set_visible(False)
 
